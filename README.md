@@ -8,6 +8,12 @@ The format of the cutoff data (XLS) should follow the [山东省2025年普通类
 
 The format of the college application form should follow the PDF file downloaded from the Application System.
 
+## Effortless Access
+
+Simply download the binary from the Releases page.
+
+*Note: Currently only supports amd64 systems. For other architectures, please build from source.*
+
 ## Motivation
 
 The Shandong Provincial Department of Education always announces the application status table a few days before the official admission results are released. You can refer to that table to check your result in advance.
