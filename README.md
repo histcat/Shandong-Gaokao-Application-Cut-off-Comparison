@@ -1,6 +1,6 @@
 # Application-Entrance Score Comparison
 
-> Compare your college application application form against last year's admission cutoff scores — instantly see which choice admits you.
+> Compare your college application application form against the admission cutoff scores — instantly see which choice admits you.
 
 A Python desktop tool that parses a Gaokao application form (PDF) and admission cutoff data (XLS), then compares your rank against each choice's minimum rank to determine admission results.
 
