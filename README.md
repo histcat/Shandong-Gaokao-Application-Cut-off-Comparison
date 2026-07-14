@@ -145,7 +145,7 @@ For each row in the application form:
 ```
 
 - **Rank** (`位次`): Your province-wide ranking number. Lower = better.
-- **Minimum Rank** (`最低位次`): The rank of the last admitted student in that major last year.
+- **Minimum Rank** (`最低位次`): The rank of the last admitted student in that major.
 - **Rule:** Your rank ≤ minimum rank → likely admitted.
 
 ## Packaging as Standalone EXE
