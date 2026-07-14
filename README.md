@@ -1,8 +1,19 @@
-# Volunteer-Entrance Score Comparison
+# Application-Entrance Score Comparison
 
-> Compare your college application volunteer form against last year's admission cutoff scores — instantly see which choice admits you.
+> Compare your college application application form against last year's admission cutoff scores — instantly see which choice admits you.
 
-A Python desktop tool that parses a Gaokao volunteer form (PDF) and admission cutoff data (XLS), then compares your rank against each choice's minimum rank to determine admission results.
+A Python desktop tool that parses a Gaokao application form (PDF) and admission cutoff data (XLS), then compares your rank against each choice's minimum rank to determine admission results.
+
+The format of the cutoff data (XLS) should follow the [山东省2025年普通类常规批第1次志愿投档情况表](https://www.sdzk.cn/NewsInfo.aspx?NewsID=6996).
+
+The format of the college application form should follow the PDF file downloaded from the Application System.
+
+## Motivation
+
+The Shandong Provincial Department of Education always announces the application status table a few days before the official admission results are released. You can refer to that table to check your result in advance.
+
+To make the process more convenient, I built this program with the help of Claude Code.
+
 
 ## Features
 
@@ -12,27 +23,6 @@ A Python desktop tool that parses a Gaokao volunteer form (PDF) and admission cu
 - **Auto-save** — comparison log automatically saved as `comparison_log_<timestamp>.txt`
 - **High-DPI Aware** — sharp rendering on 4K and high-DPI displays
 - **CJK Encoding Safe** — built-in `sanitize()` handles CJK compatibility characters to prevent encoding errors
-
-## How It Works
-
-```
-Your Volunteer Form (PDF)          Cutoff Data (XLS)
-┌──────────────────────┐          ┌──────────────────────┐
-│ Choice 1: [A246] Fudan │        │ A246+33 → min rank 583│
-│   Major 33: CS        │        │ A246+34 → min rank 612│
-│ Choice 2: [A246] Fudan │   VS   │ A269+01 → min rank 248│
-│   Major 34: Math      │        │ ...                  │
-│ Choice 3: [A269] SJTU │        │                      │
-│   Major 01: EE        │        │                      │
-│ ...                   │        │                      │
-└──────────────────────┘          └──────────────────────┘
-                    ↓
-        Your Rank: 150
-                    ↓
-  150 ≤ 583 → Admitted at Choice 1! 🎉
-```
-
-**Logic:** For each volunteer choice, look up the `(school_code, major_code)` pair in the cutoff data. If your rank ≤ the historical minimum rank, you're predicted to be admitted.
 
 ## Installation
 
@@ -50,7 +40,7 @@ pip install pandas PyPDF2 openpyxl xlrd tkinterdnd2
 | Package | Purpose |
 |---------|---------|
 | `pandas` + `openpyxl` + `xlrd` | Read cutoff data (.xls/.xlsx) |
-| `PyPDF2` | Parse volunteer form PDF |
+| `PyPDF2` | Parse application form PDF |
 | `tkinterdnd2` | Drag-and-drop file support |
 | `tkinter` | GUI toolkit (included with Python) |
 
@@ -95,7 +85,7 @@ Make sure `志愿表.pdf` and `投档线.xls` are in the same directory, or edit
 │  ──────────────────────────────────────────── │
 │                                              │
 │  ┌──────────────┐   ┌──────────────┐         │
-│  │  Volunteer PDF │   │  Cutoff XLS  │        │
+│  │  Application PDF │   │  Cutoff XLS  │        │
 │  │  📂            │   │  📊           │        │
 │  │  Drop or click │   │  Drop or click│        │
 │  └──────────────┘   └──────────────┘         │
@@ -130,7 +120,7 @@ Make sure `志愿表.pdf` and `投档线.xls` are in the same directory, or edit
 ├── BUILD.md                  ← Build & packaging guide (Chinese)
 ├── README.md                 ← This file
 ├── README.zh.md              ← Chinese README
-├── 志愿表.pdf                 ← (user-provided) Volunteer form
+├── 志愿表.pdf                 ← (user-provided) Application form
 ├── 投档线.xls                 ← (user-provided) Cutoff data
 └── comparison_log_*.txt      ← (auto-generated) Comparison logs
 ```
@@ -138,7 +128,7 @@ Make sure `志愿表.pdf` and `投档线.xls` are in the same directory, or edit
 ## Comparison Logic
 
 ```
-For each row in the volunteer form:
+For each row in the application form:
   Step 1: Extract school_code (e.g. A246) and major_code (e.g. 33)
   Step 2: Look up (school_code, major_code) in cutoff data
   Step 3: If found:
@@ -199,10 +189,10 @@ The output will be at `dist/志愿-投档线对照.exe`.
 
 ## Data Format
 
-### Volunteer Form (PDF)
+### Application Form (PDF)
 
 The tool extracts entries containing:
-- Volunteer number (志愿号)
+- application number (志愿号)
 - School code + name (e.g. `A246复旦大学`)
 - Major code + name (e.g. `33计算机科学与技术`)
 - School type (公办/民办/独立学院 etc.)
