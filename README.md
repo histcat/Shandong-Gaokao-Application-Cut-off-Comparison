@@ -6,7 +6,7 @@ A Python desktop tool that parses a Gaokao application form (PDF) and admission 
 
 The format of the cutoff data (XLS) should follow the [山东省2025年普通类常规批第1次志愿投档情况表](https://www.sdzk.cn/NewsInfo.aspx?NewsID=6996).
 
-The format of the college application form should follow the PDF file downloaded from the Application System.
+The format of the college application form (PDF) should follow the PDF file downloaded from the Application System.
 
 ## Effortless Access
 
